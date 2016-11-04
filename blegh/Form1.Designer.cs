@@ -37,6 +37,8 @@
             this.labelAddKeywords = new System.Windows.Forms.Label();
             this.progressBarImageDownload = new System.Windows.Forms.ProgressBar();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.labelWebsite = new System.Windows.Forms.Label();
+            this.textBoxWebsite = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -127,11 +129,29 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             // 
+            // labelWebsite
+            // 
+            this.labelWebsite.AutoSize = true;
+            this.labelWebsite.Location = new System.Drawing.Point(138, 117);
+            this.labelWebsite.Name = "labelWebsite";
+            this.labelWebsite.Size = new System.Drawing.Size(93, 13);
+            this.labelWebsite.TabIndex = 9;
+            this.labelWebsite.Text = "Website to search";
+            // 
+            // textBoxWebsite
+            // 
+            this.textBoxWebsite.Location = new System.Drawing.Point(12, 110);
+            this.textBoxWebsite.Name = "textBoxWebsite";
+            this.textBoxWebsite.Size = new System.Drawing.Size(120, 20);
+            this.textBoxWebsite.TabIndex = 8;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(300, 261);
+            this.Controls.Add(this.labelWebsite);
+            this.Controls.Add(this.textBoxWebsite);
             this.Controls.Add(this.progressBarImageDownload);
             this.Controls.Add(this.labelAddKeywords);
             this.Controls.Add(this.textBoxAddKeywords);
@@ -158,6 +178,8 @@
         private System.Windows.Forms.Label labelAddKeywords;
         private System.Windows.Forms.ProgressBar progressBarImageDownload;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label labelWebsite;
+        private System.Windows.Forms.TextBox textBoxWebsite;
     }
 }
 

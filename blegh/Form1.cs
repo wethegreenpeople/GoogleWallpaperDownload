@@ -17,6 +17,7 @@ namespace blegh
         string wallpaperRes;
         string monitorNum;
         string keywords;
+        string website = "site:";
 
         public Form1()
         {
@@ -27,8 +28,17 @@ namespace blegh
 
         private string GetHtmlCode()
         {
+            switch (textBoxWebsite.Text)
+            {
+                case null:
+                    website = "site:http://imgur.com/gallery/djp2g";
+                    break;
+                default:
+                    break;
+            }
             wallpaperRes = ResolutionList.SelectedItem.ToString();
-            List<string> _topics = new List<string> {keywords + monitorNum + " wallpaper " + wallpaperRes + " .png"};
+            List<string> _topics = new List<string> { website + textBoxWebsite.Text + " " + keywords + monitorNum + " wallpaper " + wallpaperRes};
+            // Change label to see what exactly is being searched
             LabelScreenRes.Text = _topics[0].ToString();
             var rnd = new Random();
 
@@ -140,15 +150,18 @@ namespace blegh
                     words[x] = randWord;
                 }
 
-                if (IsValidImage(image) == true)
+                if ((IsValidImage(image) == true) && (image.Length > 400000))
                 {
-                    if (image.Length > 555000)
-                    {
-                        File.WriteAllBytes("Wallpapers/" + words[0] + words[1] + ".png", image);
-                        ++downloadCount;
-                    }
+                    
+                    File.WriteAllBytes("Wallpapers/" + words[0] + words[1] + ".png", image);
+                    ++downloadCount;
+                    progressBarImageDownload.PerformStep();
                 }
-                progressBarImageDownload.PerformStep();
+                else
+                {
+                    --numWallpapers;
+                }
+                
             }
             if (progressBarImageDownload.Value >= 10)
             {
